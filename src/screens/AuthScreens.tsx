@@ -7,13 +7,13 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { useAuth } from '../context/authStore';
+import { useAuthStore } from '../context/authStore';
 import { Colors, Fonts, Spacing, Radius } from '../utils/theme';
 import { authAPI } from '../services/api';
 
 export default function LoginScreen() {
   const router = useRouter();
-  const { login } = useAuth();
+  const { login } = useAuthStore();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,7 +46,7 @@ export default function LoginScreen() {
         if (!name.trim()) { Alert.alert('Name required', 'Please enter your name.'); setLoading(false); return; }
         if (!username.trim()) { Alert.alert('Username required', 'Please choose a username.'); setLoading(false); return; }
         if (username.length < 3) { Alert.alert('Username too short', 'Username must be at least 3 characters.'); setLoading(false); return; }
-        await register(email, password, name.trim(), username.trim().toLowerCase());
+        await handleRegister(email, password, name.trim(), username.trim().toLowerCase());
       }
       router.replace('/(tabs)');
     } catch (err: any) {

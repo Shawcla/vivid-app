@@ -40,6 +40,9 @@ export default function RootLayout() {
         <Stack.Screen name="film/[id]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="creator/[username]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="search" options={{ animation: 'fade' }} />
+        <Stack.Screen name="notifications" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="upgrade" options={{ animation: 'slide_from_right' }} />
       </Stack>
     </GestureHandlerRootView>
   );

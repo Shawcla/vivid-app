@@ -118,14 +118,14 @@ export default function HomeScreen() {
   const onRefresh = () => { setRefreshing(true); loadData(); };
 
   const MOODS = [
-    { label: '😊 Feel Good', value: 'feel good' },
-    { label: '😱 Horror', value: 'horror' },
-    { label: '🚀 Action', value: 'action' },
-    { label: '🎭 Drama', value: 'drama' },
-    { label: '😂 Comedy', value: 'comedy' },
-    { label: '🔍 Mystery', value: 'mystery' },
-    { label: '🌟 Sci-Fi', value: 'sci-fi' },
-    { label: '💔 Romance', value: 'romance' },
+    { label: 'Feel Good', value: 'feel good' },
+    { label: 'Horror', value: 'horror' },
+    { label: 'Action', value: 'action' },
+    { label: 'Drama', value: 'drama' },
+    { label: 'Comedy', value: 'comedy' },
+    { label: 'Mystery', value: 'mystery' },
+    { label: 'Sci-Fi', value: 'sci-fi' },
+    { label: 'Romance', value: 'romance' },
   ];
 
   const fetchAIRecommendations = async (mood: string) => {

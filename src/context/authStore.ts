@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       const token = await getItem('accessToken');
       if (!token) return set({ isLoading: false });
 
-      const { data } = await authAPI.getMe();
+      const { data } = await authAPI.me();
       set({ user: data.user, isAuthenticated: true, isLoading: false });
     } catch {
       await deleteItem('accessToken');
@@ -63,8 +63,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   // ─── Logout ─────────────────────────────────────────────────────────────
   logout: async () => {
     try {
-      const refreshToken = await getItem('refreshToken');
-      if (refreshToken) await authAPI.logout(refreshToken);
+      await authAPI.logout();
     } catch {}
     await deleteItem('accessToken');
     await deleteItem('refreshToken');
@@ -77,3 +76,5 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     if (current) set({ user: { ...current, ...data } });
   },
 }));
+
+export const useAuth = useAuthStore;

@@ -49,8 +49,28 @@ export default function ProfileScreen() {
 
   const handleLogout = async () => {
     await logout();
-    router.replace('/login');
+    setActiveTab('films');
   };
+
+  if (!user) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.loggedOutWrap}>
+          <LinearGradient colors={[Colors.purple, Colors.purpleGlow]} style={styles.loggedOutAvatar}>
+            <Ionicons name="person-outline" size={34} color={Colors.white} />
+          </LinearGradient>
+          <Text style={styles.loggedOutTitle}>You’re signed out</Text>
+          <Text style={styles.loggedOutSub}>
+            Logout now stays inside the app instead of throwing an unmatched route error.
+          </Text>
+          <View style={styles.loggedOutButtons}>
+            <VividButton label="Sign In" onPress={() => router.push('/login')} style={{ width: '100%' }} />
+            <VividButton label="Browse as Guest" variant="ghost" onPress={() => router.replace('/(tabs)')} style={{ width: '100%' }} />
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   if (loading) return <LoadingSpinner />;
 
@@ -298,6 +318,40 @@ export default function ProfileScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.dark },
+
+  loggedOutWrap: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: Spacing.lg,
+    gap: Spacing.md,
+  },
+  loggedOutAvatar: {
+    width: 84,
+    height: 84,
+    borderRadius: 42,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loggedOutTitle: {
+    color: Colors.white,
+    fontFamily: Fonts.display,
+    fontSize: 28,
+    letterSpacing: 1,
+  },
+  loggedOutSub: {
+    color: Colors.textMuted,
+    fontFamily: Fonts.body,
+    fontSize: 14,
+    lineHeight: 22,
+    textAlign: 'center',
+    maxWidth: 320,
+  },
+  loggedOutButtons: {
+    width: '100%',
+    gap: 10,
+    marginTop: Spacing.sm,
+  },
 
   profileHeader: { padding: Spacing.md, paddingBottom: Spacing.lg },
   headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: Spacing.lg },
