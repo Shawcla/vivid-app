@@ -7,7 +7,6 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import * as Linking from 'expo-linking';
 import { useAuth } from '../context/authStore';
 import { Colors, Fonts, Spacing, Radius } from '../utils/theme';
 import { authAPI } from '../services/api';
