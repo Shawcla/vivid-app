@@ -40,20 +40,13 @@ export default function FilmScreen() {
   );
 
   useEffect(() => {
-    if (!player || !film?.video_url) return;
-
-    const handlePlaybackStatusUpdate = (status: any) => {
-      if (status.isBuffering) setIsBuffering(true);
-      else setIsBuffering(false);
-
-      if (status.error) {
-        setPlayerError(String(status.error));
-      }
-    };
-
-    player.addListener('playbackStatusUpdate', handlePlaybackStatusUpdate);
-    return () => player.removeListener('playbackStatusUpdate', handlePlaybackStatusUpdate);
-  }, [player, film?.video_url]);
+    if (!film?.video_url) {
+      setShowPlayer(false);
+      setIsBuffering(false);
+      return;
+    }
+    setPlayerError('');
+  }, [film?.video_url]);
 
   useEffect(() => { loadFilm(); }, [id]);
 
@@ -126,10 +119,9 @@ export default function FilmScreen() {
               player={player}
               style={styles.player}
               allowsPictureInPicture
+              allowsFullscreen
+              nativeControls
               contentFit="contain"
-              fullscreenOptions={{ orientation: 'landscape' }}
-              onPlayerPlay={() => setIsBuffering(true)}
-              onReadyForDisplay={() => setIsBuffering(false)}
             />
             {isBuffering && (
               <View style={styles.bufferingOverlay}>
@@ -345,7 +337,11 @@ const styles = StyleSheet.create({
   thumbWrapper: { width: '100%', height: '100%', position: 'relative' },
   thumb: { width: '100%', height: '100%' },
   playOverlay: {
-    ...StyleSheet.absoluteFill,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -369,7 +365,11 @@ const styles = StyleSheet.create({
   },
   durationText: { color: Colors.white, fontSize: 12, fontWeight: '700', fontFamily: Fonts.body },
   bufferingOverlay: {
-    ...StyleSheet.absoluteFill,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     backgroundColor: 'rgba(0,0,0,0.6)',
     alignItems: 'center',
     justifyContent: 'center',
@@ -479,7 +479,7 @@ const styles = StyleSheet.create({
   aiChatBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
     marginHorizontal: Spacing.md, marginBottom: Spacing.lg,
-    padding: Spacing.md, backgroundColor: Colors.surfaceElevated,
+    padding: Spacing.md, backgroundColor: Colors.dark3,
     borderRadius: Radius.lg, borderWidth: 1, borderColor: 'rgba(168,85,247,0.3)',
   },
   aiChatBtnText: {

@@ -348,8 +348,8 @@ const styles = StyleSheet.create({
   moodList: { paddingHorizontal: Spacing.md, gap: Spacing.sm },
   moodChip: {
     paddingHorizontal: 14, paddingVertical: 7,
-    backgroundColor: Colors.surfaceElevated,
-    borderRadius: Radius.full, borderWidth: 1, borderColor: Colors.border,
+    backgroundColor: Colors.dark3,
+    borderRadius: Radius.full, borderWidth: 1, borderColor: 'rgba(168,85,247,0.18)',
   },
   moodChipActive: {
     backgroundColor: Colors.purpleNeon, borderColor: Colors.purpleNeon,
@@ -358,7 +358,7 @@ const styles = StyleSheet.create({
   moodTextActive: { color: Colors.white, fontWeight: '700' },
   aiResults: {
     marginHorizontal: Spacing.md, marginTop: Spacing.md,
-    padding: Spacing.md, backgroundColor: Colors.surfaceElevated,
+    padding: Spacing.md, backgroundColor: Colors.dark3,
     borderRadius: Radius.lg, borderWidth: 1, borderColor: 'rgba(168,85,247,0.2)',
   },
   aiResultsTitle: { fontSize: 13, color: Colors.textMuted, marginBottom: 6, fontFamily: Fonts.body },

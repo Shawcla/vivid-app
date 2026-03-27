@@ -32,11 +32,12 @@ export default function SearchScreen() {
   const [aiMode, setAiMode] = useState(false);
   const [aiKeywords, setAiKeywords] = useState<string[]>([]);
   const inputRef = useRef<TextInput>(null);
-  const debounceRef = useRef<NodeJS.Timeout>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Auto-focus input
-    setTimeout(() => inputRef.current?.focus(), 200);
+    const focusTimer = setTimeout(() => inputRef.current?.focus(), 200);
+    return () => clearTimeout(focusTimer);
   }, []);
 
   useEffect(() => {
@@ -258,7 +259,7 @@ const styles = StyleSheet.create({
     width: 38, height: 38, borderRadius: 19,
     backgroundColor: Colors.dark3,
     alignItems: 'center', justifyContent: 'center',
-    borderWidth: 1, borderColor: Colors.border,
+    borderWidth: 1, borderColor: 'rgba(168,85,247,0.2)',
   },
   aiToggleActive: {
     backgroundColor: Colors.purpleNeon,

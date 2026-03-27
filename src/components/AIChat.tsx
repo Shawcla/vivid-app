@@ -195,6 +195,11 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   },
   avatarUser: { backgroundColor: Colors.purpleNeon },
+  msgBubble: {
+    maxWidth: '78%',
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.sm,
+  },
   bubbleAI: { backgroundColor: Colors.dark3, borderRadius: Radius.lg, borderBottomLeftRadius: 4 },
   bubbleUser: { backgroundColor: Colors.purpleNeon, borderRadius: Radius.lg, borderBottomRightRadius: 4 },
   msgText: { fontSize: 14, color: Colors.white, lineHeight: 20 },

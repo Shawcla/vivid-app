@@ -44,9 +44,48 @@ export const creatorsAPI = {
   list: (params?: { page?: number; limit?: number }) =>
     api.get('/creators', { params }),
   get: (username: string) => api.get(`/creators/${username}`),
+  getProfile: (username: string) => api.get(`/creators/${username}`),
   films: (username: string) => api.get(`/creators/${username}/films`),
+  getDashboardStats: () => api.get('/creators/dashboard/stats'),
+  getDashboardFilms: () => api.get('/creators/dashboard/films'),
   getWatchlist: () => api.get('/creators/dashboard/watchlist'),
-  getHistory: () => api.get('/creators/dashboard/watch-history'),
+  getHistory: () => api.get('/creators/dashboard/history'),
+};
+
+export const uploadAPI = {
+  getPresignedUrl: (filename: string, contentType: string, fileSize: number) =>
+    api.post('/upload/presign', { filename, contentType, fileSize }),
+  createFilm: (data: any) => api.post('/upload/film', data),
+  uploadThumbnail: async (uri: string) => {
+    const form = new FormData();
+    form.append('thumbnail', {
+      uri,
+      name: `thumbnail-${Date.now()}.jpg`,
+      type: 'image/jpeg',
+    } as any);
+    return api.post('/upload/thumbnail', form, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+      timeout: 30000,
+    });
+  },
+  uploadToStorage: async (
+    uploadUrl: string,
+    fileUri: string,
+    contentType: string,
+    onProgress?: (progress: number) => void
+  ) => {
+    const response = await fetch(fileUri);
+    const blob = await response.blob();
+    await axios.put(uploadUrl, blob, {
+      headers: { 'Content-Type': contentType },
+      onUploadProgress: (event) => {
+        if (event.total && onProgress) {
+          onProgress(Math.round((event.loaded / event.total) * 100));
+        }
+      },
+      timeout: 0,
+    });
+  },
 };
 
 export const aiAPI = {
