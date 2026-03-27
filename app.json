@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "VIVID",
+    "slug": "vivid-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": false,
+    "scheme": "vivid",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0A0F"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vividai.vivid",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Used to record videos",
+        "NSPhotoLibraryUsageDescription": "Used to select media",
+        "NSMicrophoneUsageDescription": "Used to record audio",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0A0A0F"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "experiments": {
+      "typedRoutes": true
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-video"
+    ]
+  }
+}
