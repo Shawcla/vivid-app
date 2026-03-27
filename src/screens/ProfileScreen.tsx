@@ -61,7 +61,7 @@ export default function ProfileScreen() {
           </LinearGradient>
           <Text style={styles.loggedOutTitle}>You’re signed out</Text>
           <Text style={styles.loggedOutSub}>
-            Logout now stays inside the app instead of throwing an unmatched route error.
+            Sign in to manage your profile, uploads, and creator tools.
           </Text>
           <View style={styles.loggedOutButtons}>
             <VividButton label="Sign In" onPress={() => router.push('/login')} style={{ width: '100%' }} />

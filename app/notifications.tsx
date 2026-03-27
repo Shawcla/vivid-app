@@ -104,7 +104,7 @@ export default function NotificationsScreen() {
           <Ionicons name="notifications-outline" size={24} color={Colors.purpleNeon} />
           <Text style={styles.heroTitle}>Notification Preferences</Text>
           <Text style={styles.heroSub}>
-            These settings are now live in the app so reviewers won’t hit a dead-end placeholder.
+            Choose which updates you want to hear about from VIVID.
           </Text>
         </View>
 

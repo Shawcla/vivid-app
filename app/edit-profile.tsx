@@ -76,7 +76,7 @@ export default function EditProfileScreen() {
           </View>
           <Text style={styles.heroTitle}>Polish your profile</Text>
           <Text style={styles.heroSub}>
-            This screen now works as a proper editor instead of a placeholder.
+            Update how your profile appears across VIVID.
           </Text>
         </View>
 
@@ -112,7 +112,7 @@ export default function EditProfileScreen() {
           />
 
           <Text style={styles.helper}>
-            For App Review this is a complete, usable screen. It updates the in-app profile immediately.
+            Changes are reflected immediately in the app after you save.
           </Text>
         </View>
 

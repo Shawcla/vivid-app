@@ -53,7 +53,7 @@ export default function UpgradeScreen() {
           <Ionicons name="sparkles" size={26} color={Colors.purpleNeon} />
           <Text style={styles.heroTitle}>Creator access is ready</Text>
           <Text style={styles.heroSub}>
-            This now works as a real upgrade path instead of a placeholder screen.
+            Upgrade your account to unlock creator tools and publishing features.
           </Text>
         </View>
 
